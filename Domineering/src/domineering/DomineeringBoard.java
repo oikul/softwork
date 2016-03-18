@@ -9,6 +9,7 @@ import java.util.Set;
 public class DomineeringBoard extends Board<DomineeringMove>{
 
 	private Player player = Player.MAXIMIZER;
+	private boolean[][] board;
 	
 	/**
 	 * this constructor creates a new 4x4 board in domineering
@@ -32,7 +33,7 @@ public class DomineeringBoard extends Board<DomineeringMove>{
 	 * @param n the height of the board
 	 */
 	public void constructBoard(int m, int n){
-		
+		setBoard(new boolean[m][n]);
 	}
 
 	@Override
@@ -45,7 +46,7 @@ public class DomineeringBoard extends Board<DomineeringMove>{
 
 	@Override
 	int value() {
-		return 0;
+		return (player == Player.MAXIMIZER) ? -1 : 1;
 	}
 
 	@Override
@@ -62,6 +63,25 @@ public class DomineeringBoard extends Board<DomineeringMove>{
 	 * generates a string representation of the game board
 	 */
 	public String toString(){
-		return "";
+		StringBuilder b = new StringBuilder();
+		for(int i = 0; i < board.length; i++){
+			for(int j = 0; j < board[0].length; j++){
+				if(board[i][j]){
+					b.append(" [ y ] ");
+				}else{
+					b.append(" [ n ] ");
+				}
+			}
+			b.append("\n");
+		}
+		return b.toString();
+	}
+
+	public boolean[][] getBoard() {
+		return board;
+	}
+
+	public void setBoard(boolean[][] board) {
+		this.board = board;
 	}
 }

@@ -36,6 +36,6 @@ public class CommandLineDomineering {
 	
 	public static void main(String args[]) {
 		DomineeringBoard board = new DomineeringBoard();
-		board.tree().firstPlayer(new Domineer());
+		System.out.println(board);
 	}
 }
